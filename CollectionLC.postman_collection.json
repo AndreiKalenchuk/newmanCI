@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "36b6e83d-bc7f-48b1-ad57-400fa5d306f1",
+		"name": "Newnan Colection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Login [Admin]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de3c6fba-5acd-4454-ae98-e7a84e111796",
+						"exec": [
+							"const body = pm.response.json();\r",
+							"\r",
+							"pm.environment.set(\"token\", body.token);\r",
+							"pm.environment.set(\"variable_key\", \"variable_value\");\r",
+							"pm.environment.set(\"userId\", body.userId);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Message is correct\", function () {\r",
+							"    pm.expect(body.message).to.be.equal(\"Auth success\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin610@qa6.us\",\r\n    \"password\": \"321321\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/user/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dd9081d6-514b-425e-9202-b232a0ae21b7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "99b8aeb8-d0d6-4687-ad40-cc26e90786ad",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
